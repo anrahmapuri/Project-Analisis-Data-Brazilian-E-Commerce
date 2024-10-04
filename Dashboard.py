@@ -41,12 +41,8 @@ shipping_time_range = st.sidebar.slider('Select shipping time range (days)', min
 # Filter: Review score range
 review_score_range = st.sidebar.slider('Select review score range', 1, 5, (1, 5))
 
-# Filter: Order status
-order_status_options = orders_cleaned['order_status'].unique()
-selected_status = st.sidebar.multiselect('Select order status', options=order_status_options, default=['delivered', 'canceled'])
-
-# Apply order status filter to orders
-filtered_orders = orders_cleaned[orders_cleaned['order_status'].isin(selected_status)]
+# Since we are removing the order status filter, apply all orders
+filtered_orders = orders_cleaned
 
 # Centered header for visualizations section
 st.markdown("<h2 style='text-align: center;'>Visualizations</h2>", unsafe_allow_html=True)
